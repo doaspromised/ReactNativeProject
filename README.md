@@ -1,2 +1,0 @@
-# ReactNativeProject
-基于ReactNative的基本App框架
