@@ -15,10 +15,13 @@
     "react-native-gesture-handler": "^1.5.0",
     "react-native-reanimated": "^1.4.0",
     "react-native-screens": "^1.0.0-alpha.23",
-    "react-navigation": "^4.0.10"
+    "react-navigation": "^4.0.10",
+    "react-navigation-props-mapper": "^1.0.1",
+    "react-navigation-stack": "^1.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
     "@babel/runtime": "^7.7.2",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
