@@ -9,10 +9,12 @@ import React, {PureComponent} from 'react';
 import {View, StyleSheet, Text, Button} from 'react-native';
 
 export default class index extends PureComponent {
+  static navigationOptions = {
+    title: 'Home',
+  };
   constructor(props) {
     super(props);
   }
-
   componentDidMount() {
     const didBlurSubscription = this.props.navigation.addListener(
       'didBlur',
@@ -26,6 +28,7 @@ export default class index extends PureComponent {
     this.props.navigation.navigate('Mine', {
       itemId: 99,
       otherParam: 'anything you want here',
+      name: 'Nick',
     });
   };
   render() {

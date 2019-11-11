@@ -6,11 +6,14 @@
  */
 
 import React, {PureComponent} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Button} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
 
 @withMappedNavigationParams()
 export default class index extends PureComponent {
+  static navigationOptions = ({navigation, name = 'Lily'}) => ({
+    title: `${name}'s Profile!`,
+  });
   constructor(props) {
     super(props);
   }
@@ -27,6 +30,15 @@ export default class index extends PureComponent {
           otherParam:
           {JSON.stringify(otherParam)}
         </Text>
+        <Button
+          title="Update the title"
+          onPress={() =>
+            this.props.navigation.setParams({
+              otherParam: 'Updated!',
+              name: 'Josh',
+            })
+          }
+        />
       </View>
     );
   }
