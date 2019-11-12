@@ -6,12 +6,9 @@
  */
 
 import React, {PureComponent} from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
 
 export default class index extends PureComponent {
-  static navigationOptions = {
-    title: 'Home',
-  };
   constructor(props) {
     super(props);
   }
@@ -24,8 +21,8 @@ export default class index extends PureComponent {
     );
   }
 
-  jumpMine = () => {
-    this.props.navigation.navigate('Mine', {
+  jumpDetail = () => {
+    this.props.navigation.navigate('Detail', {
       itemId: 99,
       otherParam: 'anything you want here',
       name: 'Nick',
@@ -33,10 +30,10 @@ export default class index extends PureComponent {
   };
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text>index</Text>
-        <Button title="跳转" onPress={this.jumpMine} />
-      </View>
+        <Button title="跳转" onPress={this.jumpDetail} />
+      </SafeAreaView>
     );
   }
 }

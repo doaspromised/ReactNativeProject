@@ -6,40 +6,13 @@
  */
 
 import React, {PureComponent} from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
-import {withMappedNavigationParams} from 'react-navigation-props-mapper';
-
-@withMappedNavigationParams()
+import {StyleSheet, Text, SafeAreaView} from 'react-native';
 export default class index extends PureComponent {
-  static navigationOptions = ({navigation, name = 'Lily'}) => ({
-    title: `${name}'s Profile!`,
-  });
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {}
-
   render() {
-    const {itemId, otherParam} = this.props;
     return (
-      <View style={styles.container}>
-        <Text>index</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
-        <Text>
-          otherParam:
-          {JSON.stringify(otherParam)}
-        </Text>
-        <Button
-          title="Update the title"
-          onPress={() =>
-            this.props.navigation.setParams({
-              otherParam: 'Updated!',
-              name: 'Josh',
-            })
-          }
-        />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Text>我的</Text>
+      </SafeAreaView>
     );
   }
 }
