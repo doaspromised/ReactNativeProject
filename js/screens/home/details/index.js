@@ -8,23 +8,19 @@
 import React, {PureComponent} from 'react';
 import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
+import BaseComponent from '../../../common/component.base';
 
 @withMappedNavigationParams()
-export default class index extends PureComponent {
+export default class index extends BaseComponent {
   static navigationOptions = ({navigation, name = 'Lily'}) => ({
     title: `${name}'s Profile!`,
   });
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {}
 
   render() {
     const {itemId, otherParam} = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <Text>index</Text>
+        <Text>详情</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>
           otherParam:
@@ -36,6 +32,14 @@ export default class index extends PureComponent {
             this.props.navigation.setParams({
               otherParam: 'Updated!',
               name: 'Josh',
+            })
+          }
+        />
+        <Button
+          title="back to mine"
+          onPress={() =>
+            this.props.navigation.navigate('Mine', {
+              data: '这是我给你的数据',
             })
           }
         />

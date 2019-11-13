@@ -22,7 +22,12 @@ export default class index extends PureComponent {
   }
 
   jumpDetail = () => {
-    this.props.navigation.navigate('Detail', {
+    // this.props.navigation.navigate('Detail', {
+    //   itemId: 99,
+    //   otherParam: 'anything you want here',
+    //   name: 'Nick',
+    // });
+    this.props.navigation.push('Detail', {
       itemId: 99,
       otherParam: 'anything you want here',
       name: 'Nick',
