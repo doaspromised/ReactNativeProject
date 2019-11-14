@@ -7,29 +7,15 @@
 
 import React, {PureComponent} from 'react';
 import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
-
-export default class index extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    const didBlurSubscription = this.props.navigation.addListener(
-      'didBlur',
-      payload => {
-        console.debug('didBlur', JSON.stringify(payload, 0, 4));
-      },
-    );
-  }
-
+import {withMappedNavigationParams} from 'react-navigation-props-mapper';
+import Router from '../../router';
+import BaseComponent from '../../common/component.base';
+@withMappedNavigationParams()
+export default class index extends BaseComponent {
   jumpDetail = () => {
-    // this.props.navigation.navigate('Detail', {
-    //   itemId: 99,
-    //   otherParam: 'anything you want here',
-    //   name: 'Nick',
-    // });
-    this.props.navigation.push('Detail', {
+    Router.navigate('Detail', {
       itemId: 99,
-      otherParam: 'anything you want here',
+      otherParam: 'anything you want here111',
       name: 'Nick',
     });
   };

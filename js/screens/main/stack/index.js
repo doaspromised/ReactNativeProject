@@ -3,8 +3,7 @@ import {Image, StyleSheet} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import TabNavigator from '../tab';
-import Components from '../../index';
-
+import registeredComponent from '../../index';
 const styles = StyleSheet.create({
   backImage: {
     marginLeft: 8,
@@ -12,7 +11,6 @@ const styles = StyleSheet.create({
     height: 25,
   },
 });
-
 const StackNavigator = createStackNavigator(
   {
     TabNavigator: {
@@ -21,11 +19,12 @@ const StackNavigator = createStackNavigator(
         header: null,
       },
     },
-    ...Components,
+    ...registeredComponent,
   },
   {
     initialRouteName: 'TabNavigator',
     defaultNavigationOptions: {
+      gesturesEnabled: true,
       headerStyle: {
         borderBottomWidth: 0, // 去掉导航底部黑线
       },

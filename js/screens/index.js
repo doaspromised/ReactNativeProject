@@ -2,7 +2,19 @@
  * 页面注册
  * @type {{Detail: *}}
  */
-const components = {
-  Detail: require('./home/details').default,
-};
-export default components;
+const components = [
+  {
+    name: 'Detail',
+    path: require('./home/details').default,
+  },
+  {
+    name: 'Test',
+    path: require('./home/details/test').default,
+  },
+];
+
+let registeredComponent = {};
+components.forEach(component => {
+  registeredComponent[component.name] = component.path;
+});
+export default registeredComponent;

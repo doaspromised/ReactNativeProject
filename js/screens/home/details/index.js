@@ -9,11 +9,13 @@ import React, {PureComponent} from 'react';
 import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
 import BaseComponent from '../../../common/component.base';
+import Router from '../../../router';
 
 @withMappedNavigationParams()
 export default class index extends BaseComponent {
   static navigationOptions = ({navigation, name = 'Lily'}) => ({
     title: `${name}'s Profile!`,
+    // headerTransparent: true,
   });
 
   render() {
@@ -38,10 +40,14 @@ export default class index extends BaseComponent {
         <Button
           title="back to mine"
           onPress={() =>
-            this.props.navigation.navigate('Mine', {
+            Router.navigate('Mine', {
               data: '这是我给你的数据',
             })
           }
+        />
+        <Button
+          title="replace testScreen"
+          onPress={() => Router.replace('Test', {data: '这是我给你的数据'})}
         />
       </SafeAreaView>
     );
