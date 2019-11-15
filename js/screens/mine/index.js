@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {StyleSheet, Text, SafeAreaView} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
 import BaseComponent from '../../common/component.base';

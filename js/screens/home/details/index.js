@@ -4,20 +4,23 @@
  * Created by 姜守栋 on 2019/11/11.
  * @format
  */
-
 import React, {PureComponent} from 'react';
-import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Button,
+  SafeAreaView,
+} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
 import BaseComponent from '../../../common/component.base';
 import Router from '../../../router';
 
 @withMappedNavigationParams()
-export default class index extends BaseComponent {
+export default class Detail extends BaseComponent {
   static navigationOptions = ({navigation, name = 'Lily'}) => ({
     title: `${name}'s Profile!`,
     // headerTransparent: true,
   });
-
   render() {
     const {itemId, otherParam} = this.props;
     return (

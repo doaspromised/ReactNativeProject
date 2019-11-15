@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HomeIconWithBadge from './homeicon.badge';
 import Home from '../../home';
 import Mine from '../../mine';
@@ -15,15 +15,15 @@ const TabNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused, horizontal, tintColor}) => {
         const {routeName} = navigation.state;
-        let IconComponent = Ionicons;
+        let IconComponent = FontAwesome;
         let iconName;
         if (routeName === 'Home') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          iconName = 'ios-home';
           // Sometimes we want to add badges to some icons.
           // You can check the implementation below.
           IconComponent = HomeIconWithBadge;
         } else if (routeName === 'Mine') {
-          iconName = 'ios-options';
+          iconName = 'user';
         }
 
         // You can return any component that you like here!

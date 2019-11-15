@@ -10,6 +10,7 @@
  * 可自行扩展
  */
 import {PureComponent} from 'react';
+import Router from '../router';
 
 export default class BaseComponent extends PureComponent {
   constructor(props) {
@@ -35,10 +36,23 @@ export default class BaseComponent extends PureComponent {
       this.componentDidBlur,
     );
   }
-  componentWillFocus() {}
+  componentWillFocus() {
+    this.checkAuth();
+  }
   componentDidFocus() {}
   componentWillBlur() {}
   componentDidBlur() {}
+  checkAuth = () => {
+    storage
+      .load({
+        key: 'userToken',
+      })
+      .catch(err => {
+        Router.navigate('Auth');
+        global.authPage = this.props.navigation?.state?.routeName;
+        global.authPageParam = this.props.navigation?.state?.params;
+      });
+  };
   componentWillUnmount() {
     this.willFocusSubscription.remove();
     this.didFocusSubscription.remove();

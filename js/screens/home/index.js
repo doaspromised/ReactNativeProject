@@ -5,25 +5,39 @@
  * @format
  */
 
-import React, {PureComponent} from 'react';
-import {StyleSheet, Text, Button, SafeAreaView} from 'react-native';
+import React from 'react';
+import {StyleSheet, Button, SafeAreaView} from 'react-native';
 import {withMappedNavigationParams} from 'react-navigation-props-mapper';
 import Router from '../../router';
 import BaseComponent from '../../common/component.base';
+
 @withMappedNavigationParams()
 export default class index extends BaseComponent {
-  jumpDetail = () => {
+  _signOutAsync = async () => {
+    await storage.remove({
+      key: 'userToken',
+    });
+  };
+
+  jumpDetail = itemId => {
     Router.navigate('Detail', {
-      itemId: 99,
+      itemId,
       otherParam: 'anything you want here111',
       name: 'Nick',
     });
   };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text>index</Text>
-        <Button title="跳转" onPress={this.jumpDetail} />
+        <Button
+          title="跳转"
+          onPress={() => {
+            const itemId = 88;
+            this.jumpDetail(itemId);
+          }}
+        />
+        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
       </SafeAreaView>
     );
   }

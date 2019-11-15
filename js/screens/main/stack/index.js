@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet} from 'react-native';
-import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import TabNavigator from '../tab';
+import Main from '../tab';
 import registeredComponent from '../../index';
+
 const styles = StyleSheet.create({
   backImage: {
     marginLeft: 8,
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
 });
 const StackNavigator = createStackNavigator(
   {
-    TabNavigator: {
-      screen: TabNavigator,
+    Main: {
+      screen: Main,
       navigationOptions: {
         header: null,
       },
@@ -22,7 +22,6 @@ const StackNavigator = createStackNavigator(
     ...registeredComponent,
   },
   {
-    initialRouteName: 'TabNavigator',
     defaultNavigationOptions: {
       gesturesEnabled: true,
       headerStyle: {
@@ -44,4 +43,4 @@ const StackNavigator = createStackNavigator(
   },
 );
 
-export default createAppContainer(StackNavigator);
+export default StackNavigator;
