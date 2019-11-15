@@ -6,14 +6,12 @@
  */
 
 import React from 'react';
-import {StyleSheet, Button, SafeAreaView} from 'react-native';
-import {withMappedNavigationParams} from 'react-navigation-props-mapper';
+import { StyleSheet, Button, SafeAreaView } from 'react-native';
 import Router from '../../router';
 import BaseComponent from '../../common/component.base';
 
-@withMappedNavigationParams()
 export default class index extends BaseComponent {
-  _signOutAsync = async () => {
+  signOutAsync = async () => {
     await storage.remove({
       key: 'userToken',
     });
@@ -37,7 +35,7 @@ export default class index extends BaseComponent {
             this.jumpDetail(itemId);
           }}
         />
-        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+        <Button title="Actually, sign me out :)" onPress={this.signOutAsync} />
       </SafeAreaView>
     );
   }

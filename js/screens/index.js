@@ -2,6 +2,8 @@
  * 页面注册
  * @type {{Detail: *}}
  */
+import { withMappedNavigationParams } from 'react-navigation-props-mapper';
+
 const components = [
   {
     name: 'Detail',
@@ -13,8 +15,8 @@ const components = [
   },
 ];
 
-let registeredComponent = {};
-components.forEach(component => {
-  registeredComponent[component.name] = component.path;
+const registeredComponent = {};
+components.forEach((component) => {
+  registeredComponent[component.name] = withMappedNavigationParams()(component.path);
 });
 export default registeredComponent;

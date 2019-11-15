@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet} from 'react-native';
-import {createStackNavigator} from 'react-navigation-stack';
+import { Image, StyleSheet } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
 import Main from '../tab';
 import registeredComponent from '../../index';
 

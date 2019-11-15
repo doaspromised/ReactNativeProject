@@ -5,20 +5,20 @@
  * @format
  */
 
-import React, {PureComponent} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {withMappedNavigationParams} from 'react-navigation-props-mapper';
+import React, { PureComponent } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
-@withMappedNavigationParams()
 export default class index extends PureComponent {
   static navigationOptions = {
     title: '测试',
   };
+
   render() {
+    const { data } = this.props;
     return (
       <View style={styles.container}>
         <Text>测试</Text>
-        <Text>{this.props.data || '暂无数据'}</Text>
+        <Text>{data || '暂无数据'}</Text>
       </View>
     );
   }

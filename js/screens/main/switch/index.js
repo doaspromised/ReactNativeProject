@@ -1,12 +1,12 @@
 import React from 'react';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import {createStackNavigator} from 'react-navigation-stack';
-import {Transition} from 'react-native-reanimated';
+import { createStackNavigator } from 'react-navigation-stack';
+import { Transition } from 'react-native-reanimated';
 import AppStack from '../stack';
 import AuthLoadingScreen from '../../auth';
 import SignInScreen from '../../auth/signin';
 
-const AuthStack = createStackNavigator({SignIn: SignInScreen});
+const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 export default createAnimatedSwitchNavigator(
   {

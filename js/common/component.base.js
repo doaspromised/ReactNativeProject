@@ -9,7 +9,7 @@
  * 备注：
  * 可自行扩展
  */
-import {PureComponent} from 'react';
+import { PureComponent } from 'react';
 import Router from '../router';
 
 export default class BaseComponent extends PureComponent {
@@ -19,44 +19,52 @@ export default class BaseComponent extends PureComponent {
     this.componentDidFocus = this.componentDidFocus.bind(this);
     this.componentWillBlur = this.componentWillBlur.bind(this);
     this.componentDidBlur = this.componentDidBlur.bind(this);
-    this.willFocusSubscription = this.props.navigation.addListener(
+    const { navigation } = this.props;
+    this.willFocusSubscription = navigation.addListener(
       'willFocus',
       this.componentWillFocus,
     );
-    this.didFocusSubscription = this.props.navigation.addListener(
+    this.didFocusSubscription = navigation.addListener(
       'didFocus',
       this.componentDidFocus,
     );
-    this.willBlurSubscription = this.props.navigation.addListener(
+    this.willBlurSubscription = navigation.addListener(
       'willBlur',
       this.componentWillBlur,
     );
-    this.didBlurSubscription = this.props.navigation.addListener(
+    this.didBlurSubscription = navigation.addListener(
       'didBlur',
       this.componentDidBlur,
     );
   }
-  componentWillFocus() {
-    this.checkAuth();
-  }
-  componentDidFocus() {}
-  componentWillBlur() {}
-  componentDidBlur() {}
-  checkAuth = () => {
-    storage
-      .load({
-        key: 'userToken',
-      })
-      .catch(err => {
-        Router.navigate('Auth');
-        global.authPage = this.props.navigation?.state?.routeName;
-        global.authPageParam = this.props.navigation?.state?.params;
-      });
-  };
+
   componentWillUnmount() {
     this.willFocusSubscription.remove();
     this.didFocusSubscription.remove();
     this.willBlurSubscription.remove();
     this.didBlurSubscription.remove();
   }
+
+  checkAuth = () => {
+    storage
+      .load({
+        key: 'userToken',
+      })
+      .catch(() => {
+        Router.navigate('Auth');
+        const { navigation: { state: { routeName, params } } } = this.props;
+        global.authPage = routeName;
+        global.authPageParam = params;
+      });
+  };
+
+  componentWillFocus() {
+    this.checkAuth();
+  }
+
+  componentDidFocus() {}
+
+  componentWillBlur() {}
+
+  componentDidBlur() {}
 }

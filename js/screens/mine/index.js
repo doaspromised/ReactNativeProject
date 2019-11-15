@@ -6,31 +6,33 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, SafeAreaView} from 'react-native';
-import {withMappedNavigationParams} from 'react-navigation-props-mapper';
+import { StyleSheet, Text, SafeAreaView } from 'react-native';
 import BaseComponent from '../../common/component.base';
 import Router from '../../router';
-@withMappedNavigationParams()
+
 export default class index extends BaseComponent {
   static navigationOptions = {
-    header: ({navigation}) => {
-      let {
-        state: {routes},
+    header: ({ navigation }) => {
+      const {
+        state: { routes },
       } = navigation;
       Router.setRouters(routes, navigation);
       return null;
     },
   };
+
   constructor(props) {
     super(props);
     this.state = {
       data: '',
     };
   }
+
   componentWillFocus() {
-    const data = this.props.data;
-    data && this.setState({data});
+    const { data } = this.props;
+    data && this.setState({ data });
   }
+
   render() {
     return (
       <SafeAreaView style={styles.container}>

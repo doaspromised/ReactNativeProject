@@ -1,14 +1,13 @@
 import React from 'react';
-import {ActivityIndicator, StatusBar, View} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import { ActivityIndicator, StatusBar, View } from 'react-native';
 import Router from '../../router';
 
 export default class AuthLoadingScreen extends React.Component {
   componentDidMount() {
-    this._bootstrapAsync()
+    this.bootstrapAsync();
   }
-  _bootstrapAsync = async () => {
-    // eslint-disable-next-line no-undef
+
+  bootstrapAsync = () => {
     storage
       .load({
         key: 'userToken',
@@ -16,7 +15,7 @@ export default class AuthLoadingScreen extends React.Component {
       .then(userToken => {
         Router.navigate(userToken ? 'Main' : 'Auth');
       })
-      .catch(error => {
+      .catch(() => {
         Router.navigate('Main');
       });
   };
