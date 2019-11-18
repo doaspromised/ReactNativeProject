@@ -7,10 +7,11 @@
 
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView } from 'react-native';
+import { withMappedNavigationParams } from 'react-navigation-props-mapper';
 import BaseComponent from '../../common/component.base';
 import Router from '../../router';
 
-export default class index extends BaseComponent {
+class index extends BaseComponent {
   static navigationOptions = {
     header: ({ navigation }) => {
       const {
@@ -36,8 +37,8 @@ export default class index extends BaseComponent {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text>{this.props.navigation.state.params?.data || '我的'}</Text>
-        <Text>{this.state.data}</Text>
+        <Text>我的</Text>
+        <Text>{this.state.data || '没有数据'}</Text>
       </SafeAreaView>
     );
   }
@@ -49,3 +50,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
   },
 });
+
+export default withMappedNavigationParams()(index);

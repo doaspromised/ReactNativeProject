@@ -1,7 +1,5 @@
 import React from 'react';
 import { Button, View } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import { withMappedNavigationParams } from 'react-navigation-props-mapper';
 import Router from '../../router';
 
 class SignInScreen extends React.Component {
@@ -10,7 +8,6 @@ class SignInScreen extends React.Component {
   };
 
   signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
     storage
       .save({
         key: 'userToken',
@@ -35,4 +32,4 @@ class SignInScreen extends React.Component {
     );
   }
 }
-export default withMappedNavigationParams()(SignInScreen);
+export default SignInScreen;

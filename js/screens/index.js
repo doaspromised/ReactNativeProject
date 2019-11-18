@@ -6,6 +6,14 @@ import { withMappedNavigationParams } from 'react-navigation-props-mapper';
 
 const components = [
   {
+    name: 'Home',
+    path: require('./home').default,
+  },
+  {
+    name: 'Mine',
+    path: require('./mine').default,
+  },
+  {
     name: 'Detail',
     path: require('./home/details').default,
   },

@@ -1,15 +1,15 @@
-import {NavigationActions, StackActions} from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
-let _navigator;
-let _routers;
-let _navigation;
+let navigator;
+let routers;
+let navigation;
 
 /**
  * 设置顶层路由导航
  * @param navigatorRef
  */
 function setTopLevelNavigator(navigatorRef) {
-  _navigator = navigatorRef;
+  navigator = navigatorRef;
 }
 
 /**
@@ -17,9 +17,9 @@ function setTopLevelNavigator(navigatorRef) {
  * @param routers
  * @param navigation
  */
-function setRouters(routers, navigation) {
-  _routers = routers;
-  _navigation = navigation;
+function setRouters(currentRouters, currentNavigation) {
+  routers = currentRouters;
+  navigation = currentNavigation;
 }
 
 /**
@@ -28,7 +28,7 @@ function setRouters(routers, navigation) {
  * @param params
  */
 function navigate(routeName, params) {
-  _navigator.dispatch(
+  navigator.dispatch(
     NavigationActions.navigate({
       type: NavigationActions.NAVIGATE,
       routeName,
@@ -40,7 +40,7 @@ function navigate(routeName, params) {
  * 返回
  */
 function pop() {
-  _navigator.dispatch(NavigationActions.back({type: NavigationActions.BACK}));
+  navigator.dispatch(NavigationActions.back({ type: NavigationActions.BACK }));
 }
 
 /**
@@ -49,7 +49,7 @@ function pop() {
  * @param params：传参
  */
 function replace(routeName, params) {
-  _navigator.dispatch(
+  navigator.dispatch(
     StackActions.replace({
       routeName,
       params,
@@ -60,7 +60,7 @@ function replace(routeName, params) {
  * 返回到顶层
  */
 function popToTop() {
-  _navigator.dispatch(NavigationActions.popToTop());
+  navigator.dispatch(NavigationActions.popToTop());
 }
 
 /**
@@ -71,12 +71,12 @@ function popToN(n) {
   if (n <= 0) {
     return;
   }
-  let len = _routers.length;
+  const len = routers.length;
   if (len < n || n === len - 1) {
     this.popToTop();
     return;
   }
-  _navigation.goBack(_routers[len - n].key);
+  navigation.goBack(routers[len - n].key);
 }
 
 /**
@@ -88,11 +88,11 @@ function popToRouter(routeName) {
     this.goBack();
     return;
   }
-  let len = _routers.length;
+  const len = routers.length;
   for (let i = 0; i < len - 1; i++) {
-    let route = _routers[i];
+    const route = routers[i];
     if (routeName === route.routeName && i !== len - 1) {
-      _navigation.goBack(_routers[i + 1].key);
+      navigation.goBack(routers[i + 1].key);
       return;
     }
   }

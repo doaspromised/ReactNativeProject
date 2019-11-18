@@ -7,10 +7,11 @@
 
 import React from 'react';
 import { StyleSheet, Button, SafeAreaView } from 'react-native';
+import { withMappedNavigationParams } from 'react-navigation-props-mapper';
 import Router from '../../router';
 import BaseComponent from '../../common/component.base';
 
-export default class index extends BaseComponent {
+class index extends BaseComponent {
   signOutAsync = async () => {
     await storage.remove({
       key: 'userToken',
@@ -31,7 +32,7 @@ export default class index extends BaseComponent {
         <Button
           title="跳转"
           onPress={() => {
-            const itemId = 88;
+            const itemId = 99;
             this.jumpDetail(itemId);
           }}
         />
@@ -47,3 +48,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
   },
 });
+export default withMappedNavigationParams()(index);
