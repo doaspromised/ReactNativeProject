@@ -16,6 +16,6 @@
 
   |-router              // 基于react-navigation 路由跳转封装 
 
-  |-screens             // 业务组件相关，建议目录结构：
+  |-screens             // 业务组件相关
 
 ```
