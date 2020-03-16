@@ -14,6 +14,21 @@
 
 @implementation AppDelegate
 
+/**
+ [ { routes:
+    [ { key: 'Home', routeName: 'Home', params: undefined },
+      { key: 'Mine', routeName: 'Mine', params: undefined } ],
+   index: 0,
+   isTransitioning: false,
+   routeName: 'Main',
+   key: 'id-1584355291911-0' },
+ { params:
+    { itemId: 99,
+      otherParam: 'anything you want here111',
+      name: 'Nick' },
+   routeName: 'Login',
+   key: 'id-1584355291911-1' } ]
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];

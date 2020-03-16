@@ -21,6 +21,14 @@ const components = [
     name: 'Test',
     path: require('./home/details/test').default,
   },
+  {
+    name: 'Login',
+    path: require('./login').default,
+  },
+  {
+    name: 'Identity',
+    path: require('./login/identity').default,
+  },
 ];
 
 const registeredComponent = {};

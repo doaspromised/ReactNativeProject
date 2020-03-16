@@ -6,20 +6,34 @@
  */
 
 import React from 'react';
-import { StyleSheet, Button, SafeAreaView } from 'react-native';
+import { StyleSheet, Button, SafeAreaView, Linking, Text } from 'react-native';
 import { withMappedNavigationParams } from 'react-navigation-props-mapper';
 import Router from '../../router';
 import BaseComponent from '../../common/component.base';
 
 class index extends BaseComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '你好',
+    };
+  }
+
   signOutAsync = async () => {
-    await storage.remove({
-      key: 'userToken',
-    });
+
+    this.setState({
+      message: 'Hello World',
+    })
+    // Linking.openURL('app-settings:')
+    //   .catch((err) => console.log('error', err));
+
+    // await storage.remove({
+    //   key: 'userToken',
+    // });
   };
 
   jumpDetail = itemId => {
-    Router.navigate('Detail', {
+    Router.push('Detail', {
       itemId,
       otherParam: 'anything you want here111',
       name: 'Nick',
@@ -29,6 +43,7 @@ class index extends BaseComponent {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <Text>{this.state.message}</Text>
         <Button
           title="跳转"
           onPress={() => {
